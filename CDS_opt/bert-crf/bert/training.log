@@ -1,0 +1,25 @@
+Git commit: 53803a3acd9c7e1115233fff458d2226d7fd0c87
+PyTorch CUDA version: 10.2
+Parameter datasets: ['VDJdb', 'PIRD']
+Parameter bert: bert
+Parameter config: /home/groups/jamesz/wukevin/projects/tcr/model_configs/bert_reduced_intermediate_pe.json
+Parameter outdir: bert_reduced_intermediate_pe_50_epochs_256_bs_5e-05_lr_0.0_warmup_VDJdb_PIRD
+Parameter epochs: 50
+Parameter bs: 256
+Parameter lr: 5e-05
+Parameter warmup: 0.0
+Parameter cpu: False
+Parameter holdout: 0.1
+Parameter noneptune: False
+Filtering VDJdb species to: ['MusMusculus', 'HomoSapiens']
+VDJdb: dropping 0 entries for null cdr3 sequence
+VDJdb: dropping 0 entries for unrecognized AAs
+PIRD data TRA/TRB instances: Counter({'TRB': 46483, 'TRA': 4019, 'TRA-TRB': 637})
+PIRD data 0.1655 data labelled with antigen sequence
+PIRD: Removing 95 entires with non amino acid residues
+Creating self supervised dataset with 98225 sequences
+Maximum sequence length: 45
+Example of tokenized input: CASSQDRGPANEQFF -> [25, 9, 13, 5, 5, 8, 3, 0, 11, 12, 13, 7, 4, 8, 18, 18, 24]
+Split test with 9822 examples
+Split train with 88403 examples
+Loading vanilla BERT model

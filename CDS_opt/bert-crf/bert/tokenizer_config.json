@@ -1,0 +1,1 @@
+{"do_lower_case": false, "do_basic_tokenize": true, "never_split": null, "unk_token": "?", "sep_token": "|", "pad_token": "$", "cls_token": "*", "mask_token": ".", "tokenize_chinese_chars": false, "strip_accents": null, "model_max_len": 45, "padding_side": "right"}

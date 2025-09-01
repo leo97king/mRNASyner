@@ -1,0 +1,16 @@
+{
+    "datasets": [
+        "VDJdb",
+        "PIRD"
+    ],
+    "bert": "bert",
+    "config": "/home/groups/jamesz/wukevin/projects/tcr/model_configs/bert_reduced_intermediate_pe.json",
+    "outdir": "bert_reduced_intermediate_pe_50_epochs_256_bs_5e-05_lr_0.0_warmup_VDJdb_PIRD",
+    "epochs": 50,
+    "bs": 256,
+    "lr": 5e-05,
+    "warmup": 0.0,
+    "cpu": false,
+    "holdout": 0.1,
+    "noneptune": false
+}
