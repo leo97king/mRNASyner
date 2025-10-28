@@ -5,7 +5,32 @@ mRNASyner is a full-length mRNA sequence design framework based on multi-module 
 ![overview](./overview.png)
 
 This framework integrates three core modules to achieve end-to-end design of full-length mRNA sequences, adapting to long-sequence optimization and providing a new solution for personalized mRNA drug development.
+## Installation
+### 1. Clone the repository
+First, clone the mRNASyner repository to your local machine:
+```bash
+git clone https://github.com/leo97king/mRNASyner.git
+```
+### 2. Download model weights
+Download the model weights via [Google Drive](https://drive.google.com/drive/folders/1a3O6CyBfhU2foKR92vsCFRbaDIs_Jx1M?usp=sharing) and place the weights in the corresponding folder.
+#### 1.Codon Optimization
+- `./CDS_opt/bert-base-cased/pytorch_model.bin`
+- `./CDS_opt/model/checkpoint.pt`
+- `./UTR_gen/model/cds23utr_model.bin`
+- `./UTR_gen/model/cds25utr_model.bin`        
 
+### 3. Create a Conda environment
+Create a new Conda environment and install the required software:
+```bash
+conda env create -f environment.yml
+conda activate mRNASyner
+```
+
+
+### 4. Run scripts
+```bash
+sh run.sh
+```
 ## Core Modules
 
 ### 1. Codon Optimization
@@ -37,59 +62,3 @@ The framework uses three distinct datasets for its tasks:
 | UTR generation | 38,313 | UCSC.hg38.knownGene dataset |
 | Degradation prediction | 6,034 | Kaggle competition |
 
-## Usage
-### 1.Codon optimization
-
-
-The `corpus` folder contains the dataset files:
-- `train_cdbox`: Training dataset
-- `dev_cdbox`: Validation dataset
-- `test_cdbox`: Testing dataset
-
-
-#### Training Code and Parameters 
-The `bert-crf4` folder contains training code and model parameters:
-- `bert_crf.py`: Training code
-- `config.py`: Parameter settings and path configuration
-- `bert-base-cased` and `bert-tiny` folders: Store corresponding model parameters
-
-```bash
-python bert_crf.py --mode train
-```
-- `mode` can be either `train` or `test`
-
-#### codontobox.ipynb
-This Jupyter notebook contains 2 scripts:
-1. Converts CDS sequences to amino acid sequences and labels corresponding codon boxes, primarily used for generating training files
-2. Converts output amino acid sequences + codon boxes back to CDS sequences, which can be used as input for subsequent UTR models
-
-  
-### UTR generation
-
-Folder `UTR_gen/data/` contains training, validation, and test data in `train`, `val`, and `test` subfolders. Each subfolder includes cds, 5utr, and 3utr sequences
-
-
-- `UTR_gen/bert-base-cased` folder: Contains pretrained model parameters and weights
-  - `vocab_5utr.txt` and `vocab_3utr.txt`: K-mers based dictionaries for tokenization across all models
-
-
-
-
-- Training/testing: `cds25utr_train.py`, `cds25utr_test.py`, `cds23utr_train.py`, `cds23utr_test.py`
-- UTR generation: `cds25utr_gen.py`, `cds23utr_gen.py`
-- Tokenization: `token.py` (for sequence fragmentation analysis)
-
-
-```bash
-# train
- python cds25utr_train.py
-# test
- python cds25utr_test.py
-```
-
-#### Preprocessing & Analysis
-`preprocess.ipynb` includes:
-- Data processing workflow
-- K-mers dictionary construction
-- Evaluation metrics (Rouge, Jaccard, BLEU)
-- K-mers analysis
